@@ -98,7 +98,7 @@ def home():
     for g in groupchecking.groups:
         htmltext+=f"<tr><td><a href='lyrics?group={g}'>{g}</a></td></tr>"
 
-    htmltext+="</table>"
+    htmltext+="</table><br><br><br>가사 추가 문의 partyhost@changpop.party"
 
     return htmltext
 
