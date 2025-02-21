@@ -38,7 +38,11 @@ def youthyouthsheet():
                 #폴더내 모든파일 가져오기
                 print(group)
                 print(f"{os.path.dirname(os.path.abspath(__file__))}/lyrics/{group}")
-                file_list=os.listdir(f"{os.path.dirname(os.path.abspath(__file__))}/lyrics/{group}")
+                try:
+                    file_list=os.listdir(f"{os.path.dirname(os.path.abspath(__file__))}/lyrics/{group}")
+                except:
+                    return "현재 가사 목록이 있는 월드컵이 아니거나, 존재하지 않는 창드컵입니다."
+
                 print(file_list)
                 htmltext="<table>"
                 for f in file_list:
