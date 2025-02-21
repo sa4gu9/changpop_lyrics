@@ -17,8 +17,7 @@ if option.testMode:
 else:
     host="0.0.0.0"
 
-class groupchecking:
-    groups=[]
+
 
 @app.route('/lyrics', methods=['GET','POST'])
 def youthyouthsheet():
@@ -83,21 +82,18 @@ def getFileContent(htmlFileName,cpoplink=None):
 @app.route('/', methods=['GET','POST'])
 def home():
     groups=[]
+    htmltext=""
     #파일 읽기 with로
     with open(f"{os.path.dirname(os.path.abspath(__file__))}/group.txt","r",encoding="UTF-8") as f:
         groups=f.readlines()
         print(groups)
-        if groups!=groupchecking.groups or len(groupchecking.groups)==0:
-            groupchecking.groups=groups
-        
-        for g in range(len(groupchecking.groups)):
-            groupchecking.groups[g]=groupchecking.groups[g].replace("\n","")
-    print(len(groupchecking.groups))
 
-    htmltext='<script src="./ads.js"><table>'
+        htmltext='<script src="./ads.js"><table>'
 
-    for g in groupchecking.groups:
-        htmltext+=f"<tr><td><a href='lyrics?group={g}'>{g}</a></td></tr>"
+        for g in groups:
+            g=g.replace("\n","")
+            htmltext+=f"<tr><td><a href='lyrics?group={g}'>{g}</a></td></tr>"
+    
 
     htmltext+="</table><br><br><br>가사 추가 문의 partyhost@changpop.party"
 
