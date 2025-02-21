@@ -94,7 +94,7 @@ def home():
             groupchecking.groups[g]=groupchecking.groups[g].replace("\n","")
     print(len(groupchecking.groups))
 
-    htmltext='<script src="ads.js"><table>'
+    htmltext='<script src="./ads.js"><table>'
 
     for g in groupchecking.groups:
         htmltext+=f"<tr><td><a href='lyrics?group={g}'>{g}</a></td></tr>"
