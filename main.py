@@ -110,15 +110,15 @@ def adstxt():
         return f.read()
 
 if __name__ == '__main__':
-    app.run(debug=True, host=host, port=option.port)
-    # if option.testMode:
-    #     app.run(debug=True, host=host, port=option.port)
-    # else:
-    #     # Debug/Development
-    #     # app.run(debug=True, host="0.0.0.0", port="5000")
-    #     # Production
+    # app.run(debug=True, host=host, port=option.port)
+    if option.testMode:
+        app.run(debug=True, host=host, port=option.port)
+    else:
+        # Debug/Development
+        # app.run(debug=True, host="0.0.0.0", port="5000")
+        # Production
         
 
 
-    #     http_server = WSGIServer(('', option.port), app)
-    #     http_server.serve_forever()
+        http_server = WSGIServer(('', option.port), app)
+        http_server.serve_forever()
