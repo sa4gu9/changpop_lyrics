@@ -28,6 +28,9 @@ def youthyouthsheet():
     if group==None:
         return "잘못된 접근입니다."
     else:
+        groups=[]
+        with open(f"{os.path.dirname(os.path.abspath(__file__))}/group.txt","r",encoding="UTF-8") as f:
+            groups=f.readlines()
         print(group)
         print(groupchecking.groups)
         if group in groupchecking.groups:
@@ -83,20 +86,26 @@ def getFileContent(htmlFileName,cpoplink=None):
 def home():
     groups=[]
     htmltext=""
+
+    with open(f"{os.path.dirname(os.path.abspath(__file__))}/templates/ads.html","r",encoding="UTF-8") as f:
+        htmltext+=f.read()
+
+
     #파일 읽기 with로
     with open(f"{os.path.dirname(os.path.abspath(__file__))}/group.txt","r",encoding="UTF-8") as f:
         groups=f.readlines()
-        print(groups)
 
-        htmltext='<script src="./ads.js"><table>'
+    htmltext+='<body><table>'
 
-        for g in groups:
-            g=g.replace("\n","")
-            htmltext+=f"<tr><td><a href='lyrics?group={g}'>{g}</a></td></tr>"
+    for g in groups:
+        g=g.replace("\n","")
+    
+        htmltext+=f"<tr><td><a href='lyrics?group={g}'>{g}</a></td></tr>"
     
 
-    htmltext+="</table><br><br><br>가사 추가 문의 partyhost@changpop.party"
-
+    htmltext+="</table><br><br><br>가사 추가 문의 partyhost@changpop.party</body>"
+    print(htmltext)
+    
     return htmltext
 
 
