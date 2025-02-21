@@ -31,9 +31,9 @@ def youthyouthsheet():
         groups=[]
         with open(f"{os.path.dirname(os.path.abspath(__file__))}/group.txt","r",encoding="UTF-8") as f:
             groups=f.readlines()
+            groups=[g.replace("\n","") for g in groups]
         print(group)
-        print(groupchecking.groups)
-        if group in groupchecking.groups:
+        if group in groups:
             if songName==None:
                 #폴더내 모든파일 가져오기
                 print(group)
