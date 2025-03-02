@@ -40,6 +40,14 @@ def youthyouthsheet():
                 print(f"{os.path.dirname(os.path.abspath(__file__))}/lyrics/{group}")
                 try:
                     file_list=os.listdir(f"{os.path.dirname(os.path.abspath(__file__))}/lyrics/{group}")
+
+                    if group=="따따잇컵" or group=="건드림컵":
+                        returnstr=""
+                        for file_name in file_list:
+                            with open(f"{os.path.dirname(os.path.abspath(__file__))}/lyrics/{group}/{file_name}","r",encoding="UTF-8") as f:
+                                returnstr+=f.read()
+                                returnstr+="<br>"
+                        return returnstr
                 except:
                     return "현재 가사 목록이 있는 월드컵이 아니거나, 존재하지 않는 창드컵입니다."
 
